@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BerriGo — Ready to Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 字体（偏 Rounded / 工程友好） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0f1113;
+      --bg-light: #f5f6f7;
+      --text-main: #1c1e21;
+      --text-sub: #6b7280;
+      --accent: #4caf50; /* BerriGo Green */
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #d1d5db;
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .lang-btn[aria-pressed="true"], .lang-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      .lang-btn { padding: 6px 8px; font-size: 12px; }
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 120px 64px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      max-width: 720px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      font-size: 20px;
+      color: var(--text-sub);
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 12px 34px rgba(10,10,10,0.12);
+      display: block;
+    }
+
+    .img-caption {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-media { margin-top: 24px; }
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      border: 1px solid #d1d5db;
+      color: var(--text-main);
+    }
+
+    .features {
+      background: #ffffff;
+      padding: 100px 64px;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 16px;
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      color: var(--text-sub);
+      font-size: 16px;
+    }
+
+    .maker {
+      padding: 100px 64px;
+      background: var(--bg-dark);
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .maker h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .maker p {
+      font-size: 18px;
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    footer {
+      padding: 40px 64px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    @media (max-width: 768px) {
+      header, .hero, .features, .maker, footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Berri<span>Go</span></div>
+  <div class="lang-switch" role="navigation" aria-label="Language selector">
+    <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+    <button class="lang-btn" data-lang="zh" aria-pressed="false">中</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <h1 data-i18n="hero.title">Lightweight boards and systems.<br>Ready to go.</h1>
+      <p data-i18n="hero.description">
+        BerriGo builds modular hardware and software platforms designed for fast
+        prototyping, learning, and real-world projects.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary" data-i18n="hero.getStarted">Get Started</a>
+        <a href="#" class="btn btn-secondary" data-i18n="hero.viewHardware">View Hardware</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <a href="imgs/BerriGo-Device.png" target="_blank" rel="noopener noreferrer">
+        <img src="imgs/BerriGo-Device.png" alt="" data-i18n-alt="hero.imageAlt">
+      </a>
+      <p class="img-caption" data-i18n="hero.imageCaption">Product photo — BerriGo device</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-grid">
+
+    <div class="feature">
+      <h3 data-i18n="feature1.title">Ready Out of the Box</h3>
+      <p data-i18n="feature1.desc">
+        From power-on to first program in minutes.
+        No complex setup, no unnecessary layers.
+      </p>
+    </div>
+
+    <div class="feature">
+      <h3 data-i18n="feature2.title">Modular by Design</h3>
+      <p data-i18n="feature2.desc">
+        Core boards, extensions, and software stack
+        designed to grow with your project.
+      </p>
+    </div>
+
+    <div class="feature">
+      <h3 data-i18n="feature3.title">Built for Makers</h3>
+      <p data-i18n="feature3.desc">
+        Clear documentation, open tooling, and a
+        system you can truly understand.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="maker">
+  <h2 data-i18n="maker.title">Made for makers who want to build, not fight tools.</h2>
+  <p data-i18n="maker.description">
+    Whether you're learning, prototyping, or shipping a product,
+    BerriGo helps you focus on ideas — not friction.
+  </p>
+</section>
+
+<footer data-i18n="footer">
+  © 2025 BerriGo. Ready to Go.
+</footer>
+
+<script>
+  (function(){
+    const translations = {
+      en: {
+        "title":"BerriGo — Ready to Go",
+        "hero.title":"Lightweight boards and systems.<br>Ready to go.",
+        "hero.description":"BerriGo builds modular hardware and software platforms designed for fast prototyping, learning, and real-world projects.",
+        "hero.getStarted":"Get Started",
+        "hero.viewHardware":"View Hardware",
+        "hero.imageAlt":"Photo of BerriGo device",
+        "hero.imageCaption":"Product photo — BerriGo device",
+        "feature1.title":"Ready Out of the Box",
+        "feature1.desc":"From power-on to first program in minutes. No complex setup, no unnecessary layers.",
+        "feature2.title":"Modular by Design",
+        "feature2.desc":"Core boards, extensions, and software stack designed to grow with your project.",
+        "feature3.title":"Built for Makers",
+        "feature3.desc":"Clear documentation, open tooling, and a system you can truly understand.",
+        "maker.title":"Made for makers who want to build, not fight tools.",
+        "maker.description":"Whether you're learning, prototyping, or shipping a product, BerriGo helps you focus on ideas — not friction.",
+        "footer":"© 2025 BerriGo. Ready to Go."
+      },
+      zh: {
+        "title":"BerriGo — 开箱即用",
+        "hero.title":"轻量化的开发板与系统。<br>随时可用。",
+        "hero.description":"BerriGo 致力于构建模块化的硬件与软件平台，方便快速原型开发、与项目交付。",
+        "hero.getStarted":"开始使用",
+        "hero.viewHardware":"查看硬件",
+        "hero.imageAlt":"BerriGo 设备照片",
+        "hero.imageCaption":"产品照片 — BerriGo 设备",
+        "feature1.title":"开箱即用",
+        "feature1.desc":"从开机到运行程序只需几分钟。无杂配置，无多余层级。",
+        "feature2.title":"模块化设计",
+        "feature2.desc":"核心板、扩展与软件栈可随项目成长而扩展。",
+        "feature3.title":"为创客打造",
+        "feature3.desc":"清晰的文档、开源工具链，以及你真正可以理解的系统。",
+        "maker.title":"为想构建而不是与工具斗争的创客打造。",
+        "maker.description":"无论你在学习、原型开发或交付产品，BerriGo 帮你把精力放在想法上，专注创意。",
+        "footer":"© 2025 BerriGo。随时可用。"
+      }
+    };
+
+    function applyLang(lang){
+      try {
+        const t = translations[lang] || translations.en;
+        document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
+        if (t.title) document.title = t.title;
+
+        const isHTML = (s) => /<[^>]+>/.test(s);
+
+        document.querySelectorAll('[data-i18n]').forEach(el=>{
+          const key = el.getAttribute('data-i18n');
+          const value = t[key];
+          if (value === undefined) return;
+          try {
+            if (isHTML(String(value))) el.innerHTML = value;
+            else el.textContent = value;
+          } catch (err) {
+            console.error('i18n: failed to set content for', key, value, err);
+          }
+        });
+
+        // support alt attributes for images
+        document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
+          const key = el.getAttribute('data-i18n-alt');
+          const value = t[key];
+          if (value !== undefined) {
+            try { el.setAttribute('alt', value); } catch (err) { console.error('i18n: failed to set alt for', key, err); }
+          }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn=>{
+          const is = btn.getAttribute('data-lang') === lang;
+          btn.setAttribute('aria-pressed', is ? 'true' : 'false');
+          btn.classList.toggle('active', is);
+        });
+      } catch (err) {
+        console.error('i18n: applyLang error', err);
+      }
+    }
+
+    function setLang(lang){
+      try { localStorage.setItem('lang', lang); } catch(e) { /* ignore */ }
+      try { applyLang(lang); } catch(e) { console.error('i18n: setLang error', e); }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const switcher = document.querySelector('.lang-switch');
+      if (switcher) {
+        switcher.addEventListener('click', (e) => {
+          const btn = e.target.closest('.lang-btn');
+          if (btn) setLang(btn.getAttribute('data-lang'));
+        });
+        // keyboard support (Enter / Space)
+        switcher.addEventListener('keydown', (e) => {
+          const btn = e.target.closest('.lang-btn');
+          if (btn && (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar')) {
+            e.preventDefault();
+            setLang(btn.getAttribute('data-lang'));
+          }
+        });
+      } else {
+        // fallback
+        document.querySelectorAll('.lang-btn').forEach(btn=>{
+          btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+        });
+      }
+      const saved = localStorage.getItem('lang') || ((navigator.language||'').startsWith('zh') ? 'zh' : 'en');
+      applyLang(saved);
+    });
+  })();
+</script>
+
+</body>
+</html>
